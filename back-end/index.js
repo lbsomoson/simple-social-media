@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser'); 
 
 //connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/socmed', 
-	{ useNewUrlParser: true, useUnifiedTopology: true },
-	(err) => {
+mongoose.connect(process.env.MONGO_URI || 'mongodb://mongodb:27017/socmed', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
 		if(err) {console.log(err);}
 		else { console.log("Successfully connected to MongoDB"); }
 	}
